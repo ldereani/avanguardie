@@ -14,18 +14,18 @@ global $post;
 </div>
 </label>
 <ul id="verticalMenu">
-<li class="navMenuLink"><a class="navMenuLinkContent" href="#home">Home</a></li>
-<li class="navMenuLink"><a class="navMenuLinkContent" href="#about">Chi siamo</a></li>
-<li class="navMenuLink"><a class="navMenuLinkContent" href="#details">Il Manifesto</a></li>
+<li class="navMenuLink"><a class="navMenuLinkContent" href="/#home">Home</a></li>
+<li class="navMenuLink"><a class="navMenuLinkContent" href="/chi-siamo">Chi siamo</a></li>
+<li class="navMenuLink"><a class="navMenuLinkContent" href="/manifesto-matericista">Il Manifesto</a></li>
 <li class="navMenuLink"><a class="navMenuLinkContent" href="#activities">Attivit&agrave;</a></li>
-<li class="navMenuLink"><a class="navMenuLinkContent" href="#rsvp">Contatti</a></li>
+<li class="navMenuLink"><a class="navMenuLinkContent" href="/contatti">Contatti</a></li>
 </ul>
 <ul id="horizontalMenu" style="padding:0;margin:0;">
-<li class="navMenuLink"><a class="navMenuLinkContent" href="#home">Home</a></li>
-<li class="navMenuLink"><a class="navMenuLinkContent" href="#about">Chi siamo</a></li>
-<li class="navMenuLink"><a class="navMenuLinkContent" href="#details">Il Manifesto</a></li>
+<li class="navMenuLink"><a class="navMenuLinkContent" href="/#home">Home</a></li>
+<li class="navMenuLink"><a class="navMenuLinkContent" href="/chi-siamo">Chi siamo</a></li>
+<li class="navMenuLink"><a class="navMenuLinkContent" href="/manifesto-matericista">Il Manifesto</a></li>
 <li class="navMenuLink"><a class="navMenuLinkContent" href="#activities">Attivit&agrave;</a></li>
-<li class="navMenuLink"><a class="navMenuLinkContent" href="#rsvp">Contatti</a></li>
+<li class="navMenuLink"><a class="navMenuLinkContent" href="/contatti">Contatti</a></li>
 </ul>
 </nav>
 <?php

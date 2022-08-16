@@ -7,7 +7,7 @@ global $post;
 <div id="IRybL83zrPB6dAfd" style="background-color:#457e58;transform:scale(1, 1);overflow:hidden;width:100%;opacity:1.0;height:100%;top:0%;left:0%;position:absolute;">
 </div>
 <div id="oGrywyuYwHBujgyE">
-<div id="HxdTCJYFCqOfQZCc" style="pointer-events:none;">
+<div id="HxdTCJYFCqOfQZCc" >
 <div id="BmInD28CNTWIj3LA" style="padding-top:87.72328635%;transform:rotate(0deg);">
 <div id="n4JxkJK5He5hSJyo" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <svg id="yJqwwFf4oLz6NFA2" viewBox="0 0 126.3643 110.8509" preserveAspectRatio="none" style="overflow:hidden;top:0%;left:0%;width:100%;position:absolute;opacity:1.0;height:100%;">
@@ -19,7 +19,7 @@ global $post;
 </div>
 </div>
 </div>
-<div id="Uc8e5oN7D0XyOYAi" style="pointer-events:none;">
+<div id="Uc8e5oN7D0XyOYAi" >
 <div id="VO5eqrqqg6SQoiMD" style="padding-top:99.81818182%;transform:rotate(0deg);">
 <div id="LbuLmmSkHztrmB1E" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <div id="ZOZRp0jIj4LpoZRn" style="width:100%;opacity:1.0;height:100%;">
@@ -32,7 +32,7 @@ global $post;
 </div>
 </div>
 </div>
-<div id="uw6V2UkLNp4NyHYX" style="pointer-events:none;">
+<div id="uw6V2UkLNp4NyHYX" >
 <div id="TPb8t7Z4ZB43aRq4" style="padding-top:105.39713491%;transform:rotate(0deg);">
 <div id="Vde0PGadjd2AjBgT" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <svg id="HwaEybmZqTcL3XRN" viewBox="0 0 102.9955 108.5543" preserveAspectRatio="none" style="overflow:hidden;top:0%;left:0%;width:100%;position:absolute;opacity:1.0;height:100%;">
@@ -44,7 +44,7 @@ global $post;
 </div>
 </div>
 </div>
-<div id="tEdOCY7VxLBpsN7T" style="pointer-events:none;">
+<div id="tEdOCY7VxLBpsN7T" >
 <div id="jKuhOhRvruotZh5B" style="padding-top:23.21808444%;transform:rotate(0deg);">
 <div id="yqzxg9ggFXkvh7hz" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <div id="Jv0gys1391LxF6uT" style="width:100%;opacity:1.0;height:100%;">
@@ -54,29 +54,29 @@ global $post;
 </div>
 </div>
 </div>
-<div id="IPwVnEsSEW4n2y9W" style="pointer-events:none;">
+<div id="IPwVnEsSEW4n2y9W" >
 <div id="G8Ud76mQIksOKarH" style="padding-top:14.18416088%;transform:rotate(0deg);">
 <div id="Rtp2DTpZZeZEF2LH" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <div id="F0jrV3rhRV7x31eB" style="flex-direction:column;display:flex;width:100%;justify-content:center;opacity:1.0;height:100%;">
-<p id="u53vz79TQxhDK3l6" style="margin-left:0em;text-transform:uppercase;color:#dddac5;letter-spacing:0em;font-family:YAD0xLc7TF0-2;line-height:1.1em;direction:ltr;text-align:center;"><span id="keldCHhgzaPzmlqe" style="color:#dddac5;">vai a contatti</span><br></p>
+<p id="u53vz79TQxhDK3l6" style="margin-left:0em;text-transform:uppercase;color:#dddac5;letter-spacing:0em;font-family:YAD0xLc7TF0-2;line-height:1.1em;direction:ltr;text-align:center;"><a href="/contatti"><span id="keldCHhgzaPzmlqe" style="color:#dddac5;">vai a contatti</span></a><br></p>
 </div>
 </div>
 </div>
 </div>
-<div id="JaZNrujMHLxFfus8" style="pointer-events:none;">
+<div id="JaZNrujMHLxFfus8" >
 <div id="WypdZEmcpIYjn5zh" style="padding-top:84.47055925%;transform:rotate(0deg);">
 <div id="SVjzT3S8ns3Kcnuv" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <div id="w7c2CBx3rJ8GpbsU" style="width:100%;opacity:1.0;height:100%;">
 <div id="YTgBqgEQoopaCMvg" style="transform:scale(1, 1);overflow:hidden;width:100%;height:100%;">
 <div id="tqTgArmnfo08Kk9S" style="transform: rotate(0deg); top: 0%; left: -85.0949%; width: 185.095%; position: relative; opacity: 1; height: 100%;">
-<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/a9071a05077cf2821b60663c5379701b.svg" alt="Black Right Arrow" loading="lazy" style="width:100%;height:100%;">
+<a href="/contatti"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/a9071a05077cf2821b60663c5379701b.svg" alt="Black Right Arrow" loading="lazy" style="width:100%;height:100%;"></a>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="tAnceDYASVBcdtNx" style="pointer-events:none;">
+<div id="tAnceDYASVBcdtNx" >
 <div id="MwkIaQ0h7dD7kh6C" style="padding-top:63.83231594%;transform:rotate(0deg);">
 <div id="HfasPNSkFzbrZaWP" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <svg id="PsmuGCR99cohDUxo" viewBox="0 0 159.0846 101.5474" preserveAspectRatio="none" style="overflow:hidden;top:0%;left:0%;width:100%;position:absolute;opacity:1.0;height:100%;">
@@ -88,7 +88,7 @@ global $post;
 </div>
 </div>
 </div>
-<div id="hTVjX5zx6IjaKCKY" style="pointer-events:none;">
+<div id="hTVjX5zx6IjaKCKY" >
 <div id="GS8jFFavx3zHbvr1" style="padding-top:62.50536251%;transform:rotate(0deg);">
 <div id="hDNElc6unXYApvuT" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <div id="C4PsgGPvZOKyWz0H" style="width:100%;opacity:1.0;height:100%;">
@@ -101,7 +101,7 @@ global $post;
 </div>
 </div>
 </div>
-<div id="aHU3Fw3D53RGNZxa" style="pointer-events:none;">
+<div id="aHU3Fw3D53RGNZxa" >
 <div id="j3J6KiIuZtJIyra5" style="padding-top:100%;transform:rotate(0deg);">
 <div id="ytkarqh7Jz7CzFjP" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <div id="VxtF5dzqKJb3KPUT" style="width:100%;opacity:1.0;height:100%;">
@@ -114,7 +114,7 @@ global $post;
 </div>
 </div>
 </div>
-<div id="WNAZQQrkgLAGjpFv" style="pointer-events:none;">
+<div id="WNAZQQrkgLAGjpFv" >
 <div id="CX9TzMZqTQC8XhNQ" style="padding-top:100%;transform:rotate(0deg);">
 <div id="Cdssj0CIPpfLvj8h" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <svg id="b1uFH5IMGPHCSVv5" viewBox="0 0 64.0 64.0" preserveAspectRatio="none" style="overflow:hidden;top:0%;left:0%;width:100%;position:absolute;opacity:1.0;height:100%;">
@@ -126,7 +126,7 @@ global $post;
 </div>
 </div>
 </div>
-<div id="oiIAFlUZ3BOb6nHA" style="pointer-events:none;">
+<div id="oiIAFlUZ3BOb6nHA" >
 <div id="VHhohsznQiIbBbRT" style="padding-top:89.3188001%;transform:rotate(0deg);">
 <div id="yvhA8c9EcJTSbQth" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <svg id="k7nM9y8VqG0c4fA1" viewBox="0 0 125.1539 111.786" preserveAspectRatio="none" style="overflow:hidden;top:0%;left:0%;width:100%;position:absolute;opacity:1.0;height:100%;">
@@ -138,7 +138,7 @@ global $post;
 </div>
 </div>
 </div>
-<div id="J3liMSWo69oRIf39" style="pointer-events:none;">
+<div id="J3liMSWo69oRIf39" >
 <div id="Sv2p7j4MPUpywnI9" style="padding-top:134.90893838%;transform:rotate(0deg);">
 <div id="O2cfKuqqRS3Ia6qB" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <svg id="FRYzcFF7QNLqq3tN" viewBox="0 0 85.74 115.6709" preserveAspectRatio="none" style="overflow:hidden;top:0%;left:0%;width:100%;position:absolute;opacity:1.0;height:100%;">
@@ -150,7 +150,7 @@ global $post;
 </div>
 </div>
 </div>
-<div id="sottmMUgeNNMrmwn" style="pointer-events:none;">
+<div id="sottmMUgeNNMrmwn" >
 <div id="xeYGiVUw5d0dVV3A" style="padding-top:97.82903664%;transform:rotate(0deg);">
 <div id="X0V4O0tuT2rTG365" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <div id="hUTxJPqGUGFOVi8q" style="width:100%;opacity:1.0;height:100%;">
@@ -163,7 +163,7 @@ global $post;
 </div>
 </div>
 </div>
-<div id="LkPTlY5c89LV3Qy1" style="pointer-events:none;">
+<div id="LkPTlY5c89LV3Qy1" >
 <div id="ta1E1pI0LMVDrzwg" style="padding-top:39.14348918%;transform:rotate(0deg);">
 <div id="ztN7zbhoF8BoIHE1" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <svg id="EwpK1KkPFErLy2CH" viewBox="0 0 64.0 25.0518" preserveAspectRatio="none" style="overflow:hidden;top:0%;left:0%;width:100%;position:absolute;opacity:1.0;height:100%;">
@@ -175,7 +175,7 @@ global $post;
 </div>
 </div>
 </div>
-<div id="eAo6b2xuXMZXNDD8" style="pointer-events:none;">
+<div id="eAo6b2xuXMZXNDD8" >
 <div id="ADuXFRLAGACCmVMd" style="padding-top:246.21918305%;transform:rotate(0deg);">
 <div id="d8QeXZe6H4gtDIjm" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <svg id="w7gxhOLvQXheeVRI" viewBox="0 0 43.7087 107.6193" preserveAspectRatio="none" style="overflow:hidden;top:0%;left:0%;width:100%;position:absolute;opacity:1.0;height:100%;">
