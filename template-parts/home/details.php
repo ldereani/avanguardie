@@ -57,24 +57,24 @@ global $post;
 </div>
 </div>
 </div>
-<div id="uEbXjoIYB9pEMvQT" style="pointer-events:none;">
+<div id="uEbXjoIYB9pEMvQT">
 <div id="VTYlDqG6p5BkqtMm" style="padding-top:84.47055925%;transform:rotate(0deg);">
 <div id="wZWjNlcxHecP5H6g" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <div id="RlkvEMq9wOKi8gHn" style="width:100%;opacity:1.0;height:100%;">
 <div id="zwYPjGCzxMSksJRt" style="transform:scale(1, 1);overflow:hidden;width:100%;height:100%;">
 <div id="QKUoyVJpV6ChQAAh" style="transform: rotate(0deg); top: 0%; left: -85.0949%; width: 185.095%; position: relative; opacity: 1; height: 100%;">
-<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/a9071a05077cf2821b60663c5379701b.svg" alt="Black Right Arrow" loading="lazy" style="width:100%;height:100%;">
+<a href="/manifesto-matericista"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/a9071a05077cf2821b60663c5379701b.svg" alt="Black Right Arrow" loading="lazy" style="width:100%;height:100%;"></a>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="FFCHAf2Y6we7A6GO" style="pointer-events:none;">
+<div id="FFCHAf2Y6we7A6GO">
 <div id="e036M9rmdeevaMaU" style="padding-top:44.23756757%;transform:rotate(0deg);">
 <div id="mTDdkOahbuhyMfi5" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
 <div id="NrYi2EFWyx8KjwWT" style="flex-direction:column;display:flex;width:100%;justify-content:center;opacity:1.0;height:100%;">
-<p id="OyDQCMA1GC0pIR10" style="margin-left:0em;text-transform:uppercase;color:#dddac5;letter-spacing:0em;font-family:YAD0xLc7TF0-2;line-height:1.23em;direction:ltr;text-align:center;"><span id="yVEHwPLjNGX1MONJ" style="color:#dddac5;">vai al ​Manifesto ​matericista</span><br></p>
+<p id="OyDQCMA1GC0pIR10" style="margin-left:0em;text-transform:uppercase;color:#dddac5;letter-spacing:0em;font-family:YAD0xLc7TF0-2;line-height:1.23em;direction:ltr;text-align:center;"><a href="/manifesto-matericista"><span id="yVEHwPLjNGX1MONJ" style="color:#dddac5;">vai al ​Manifesto ​matericista</span></a><br></p>
 </div>
 </div>
 </div>

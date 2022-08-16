@@ -7,7 +7,7 @@ global $post;
         <div id="aFSw3FhMiObgZbe8" style="background-color:#f6f6e9;transform:scale(1, 1);overflow:hidden;width:100%;opacity:1.0;height:100%;top:0%;left:0%;position:absolute;">
         </div>
         <div id="jdFgYN3SzY1sywvT">
-        <div id="PWgRZgicY4U7r8eV" style="pointer-events:none;">
+        <div id="PWgRZgicY4U7r8eV">
         <div id="j4H47Vyh9G2X02nR" style="padding-top:98.48776513%;transform:rotate(0deg);">
         <div id="G5KnEXKI42jUwvMU" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
         <svg id="QQfaodWGIcpzIndL" viewBox="0 0 107.3372 105.714" preserveAspectRatio="none" style="overflow:hidden;top:0%;left:0%;width:100%;position:absolute;opacity:1.0;height:100%;">
@@ -19,7 +19,7 @@ global $post;
         </div>
         </div>
         </div>
-        <div id="yi1ep9pexOfDJUEB" style="pointer-events:none;">
+        <div id="yi1ep9pexOfDJUEB" >
         <div id="xbl8OSlI7USAftR3" style="padding-top:62.50536251%;transform:rotate(0deg);">
         <div id="vrVQrslRJ1allO0T" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
         <div id="vqh564cSEtV0mG15" style="width:100%;opacity:1.0;height:100%;">
@@ -32,7 +32,7 @@ global $post;
         </div>
         </div>
         </div>
-        <div id="oI3zWSDl0xR3F4i0" style="pointer-events:none;">
+        <div id="oI3zWSDl0xR3F4i0">
         <div id="GFLWgVEsICrWi1Y5" style="padding-top:415.76519718%;transform:rotate(-90deg);">
         <div id="UMBTW54MdLxjKoz2" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
         <svg id="SQd9tiavfInCYsLv" viewBox="0 0 78.3772 325.865" preserveAspectRatio="none" style="overflow:hidden;top:0%;left:0%;width:100%;position:absolute;opacity:1.0;height:100%;">
@@ -44,7 +44,7 @@ global $post;
         </div>
         </div>
         </div>
-        <div id="dUIxvtN8qK37H7IQ" style="pointer-events:none;">
+        <div id="dUIxvtN8qK37H7IQ" >
         <div id="TnKyZcNkuo4ZnuTA" style="padding-top:29.41923383%;transform:rotate(0deg);">
         <div id="YIfeNYd9UboaihQk" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
         <div id="XxtW8bz7jj62zqFN" style="flex-direction:column;display:flex;width:100%;justify-content:flex-end;opacity:1.0;height:100%;">
@@ -53,7 +53,7 @@ global $post;
         </div>
         </div>
         </div>
-        <div id="K1bylGplc4E0KOJl" style="pointer-events:none;">
+        <div id="K1bylGplc4E0KOJl" >
         <div id="rd5AlnYkdtmsBmg8" style="padding-top:15.83089242%;transform:rotate(0deg);">
         <div id="dSI9CqX4yV7gUff0" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
         <div id="DRA18vZ0PUecxdBj" style="flex-direction:column;display:flex;width:100%;justify-content:flex-end;opacity:1.0;height:100%;">
@@ -75,7 +75,7 @@ global $post;
         </div>
         </div>
         </div>
-        <div id="kjJbBLsBgPa8NLUA" style="pointer-events:none;">
+        <div id="kjJbBLsBgPa8NLUA" >
         <div id="Psyt60NQt9GkrnAy" style="padding-top:100.54844607%;transform:rotate(0deg);">
         <div id="fujrpWL7HzmnEUXE" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
         <div id="vLk2FMSDJaavBG2D" style="width:100%;opacity:1.0;height:100%;">
@@ -88,7 +88,7 @@ global $post;
         </div>
         </div>
         </div>
-        <div id="A6N5SzPCRYIT4M8F" style="pointer-events:none;">
+        <div id="A6N5SzPCRYIT4M8F" >
         <div id="um1DVfKzicLGdOq5" style="padding-top:97.82903664%;transform:rotate(0deg);">
         <div id="p7Mx3gC6I7PdSDLy" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
         <div id="hS4op6EWCF0EwTLc" style="width:100%;opacity:1.0;height:100%;">
@@ -101,7 +101,7 @@ global $post;
         </div>
         </div>
         </div>
-        <div id="WlQhn4EuOLQpOcQC" style="pointer-events:none;">
+        <div id="WlQhn4EuOLQpOcQC" >
         <div id="oNSXAWuh183T3iTJ" style="padding-top:39.14348918%;transform:rotate(0deg);">
         <div id="Il3Xc4BuEmgZoCLQ" style="top:0px;left:0px;width:100%;position:absolute;height:100%;">
         <svg id="psbdTxI5h3etQePH" viewBox="0 0 64.0 25.0518" preserveAspectRatio="none" style="overflow:hidden;top:0%;left:0%;width:100%;position:absolute;opacity:1.0;height:100%;">
