@@ -12,29 +12,23 @@ get_header();
     
     <main id="main-container" class="main-container">
     <?php
-        get_template_part("template-parts/home/navigation");
+        get_template_part("template-parts/common/breadcrumb");
        
         while ( have_posts() ) :
             the_post();
+
+            get_template_part("template-parts/hero/post");
+
             ?>
-            <section class="section bg-verde">
-                <div class="container">
-                    <div class="row variable-gutters">
-                        <div class="col-md-12 article-title-author-container">
-                            <div class="title-content">
-                                <h1 class="testo-titolo"><?php the_title(); ?></h1>
-                            </div><!-- /title-content -->
-                        </div><!-- /col-md-6 -->
-                    </div><!-- /row -->
-                </div><!-- /container -->
-            </section>
+
+
             <section class="section bg-crema">
                 <div class="container">
                     <article class="article-wrapper testo-contenuto">
 
 
-                        <div class="row variable-gutters" style="padding-left:5%; padding-right:5%;">
-                            <div class="col-lg-12 dim-testo-normale">
+                        <div class="row variable-gutters">
+                            <div class="col-lg-12 wrapper-content">
                                 <?php
                                 the_content();
                                 ?>

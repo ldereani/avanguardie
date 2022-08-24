@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * disable all comments
+ */
+function av_disable_all_comments() {
+	// Turn off comments
+	if( '' != get_option( 'default_comment_status' ) ) {
+		update_option( 'default_comment_status', '' );
+	}
+}
+add_action( 'after_setup_theme', 'av_disable_all_comments' );
 
 
 /**
@@ -23,7 +33,7 @@ function av_hide_editor() {
         // Get the name of the Page Template file.
         $template_file = get_post_meta( $post_id, '_wp_page_template', true );
 
-        if ( $template_file == 'page-templates/il-progetto.php' ) { // edit the template name
+        if ( $template_file == 'page-templates/la-scuola.php' ) { // edit the template name
             remove_post_type_support( 'page', 'editor' );
         }
 
@@ -71,7 +81,7 @@ function av_search_filters( $query ) {
         $allowed_types = array( "any", "school", "news", "education", "service" );
         if ( isset( $_GET["type"] ) && in_array( $_GET["type"], $allowed_types ) ) {
             $type = $_GET["type"];
-            $post_types = cdv_get_post_types_grouped( $type );
+            $post_types = av_get_post_types_grouped( $type );
             $query->set( 'post_type', $post_types );
 
         }
@@ -114,7 +124,7 @@ function av_eventi_filters( $query ) {
 
             $arrdate = explode("-", $_GET["date"]);
 
-            if(count($arrdate) != 3) return;
+            if(is_array($arrdate) && count($arrdate) != 3) return;
 
             $newdate = $arrdate[1]."/".$arrdate[0]."/".$arrdate[2];
 
@@ -138,7 +148,7 @@ function av_eventi_filters( $query ) {
             ));
 
         }else if(isset($_GET["archive"]) && ($_GET["archive"] == "true")){
-            $query->set('meta_key', '_cdv_evento_timestamp_inizio' );
+            $query->set('meta_key', '_av_evento_timestamp_inizio' );
             $query->set('orderby', array('meta_value' => 'DESC', 'date' => 'DESC'));
             $query->set( 'meta_query', array(
                 array(
@@ -156,10 +166,10 @@ function av_eventi_filters( $query ) {
             $query->set('orderby', array('meta_value' => 'DESC', 'date' => 'DESC'));
             $query->set( 'meta_query', array(
                 array(
-                    'key' => '_cdv_evento_timestamp_inizio'
+                    'key' => '_av_evento_timestamp_inizio'
                 ),
                 array(
-                    'key' => '_cdv_evento_timestamp_fine',
+                    'key' => '_av_evento_timestamp_fine',
                     'value' => time(),
                     'compare' => '>=',
                     'type' => 'numeric'
@@ -171,14 +181,14 @@ function av_eventi_filters( $query ) {
 
         if ($query->get("post_type") == "evento"){
 
-            $query->set('meta_key', '_cdv_evento_timestamp_inizio' );
+            $query->set('meta_key', '_av_evento_timestamp_inizio' );
             $query->set('orderby', array('meta_value' => 'DESC', 'date' => 'DESC'));
             $query->set( 'meta_query', array(
                 array(
-                    'key' => '_cdv_evento_timestamp_inizio'
+                    'key' => '_av_evento_timestamp_inizio'
                 ),
                 array(
-                    'key' => '_cdv_evento_timestamp_fine',
+                    'key' => '_av_evento_timestamp_fine',
                     'value' => time(),
                     'compare' => '>=',
                     'type' => 'numeric'
@@ -193,6 +203,51 @@ add_action( 'pre_get_posts', 'av_eventi_filters' );
 
 
 
+/**
+ * filter for schede progetti
+ *  controllo le query sulòle schede progetto e le modifico per estrarre quelle dell'anno in corso
+ */
+function av_schede_progetti_filters( $query ) {
+
+    if ( ! is_admin() && $query->is_main_query() && is_post_type_archive("scheda_progetto") ) {
+
+        $query->set("meta_key", "_av_scheda_progetto_is_realizzato");
+        $query->set("orderby", "_av_scheda_progetto_is_realizzato");
+        $query->set("order", "desc");
+
+
+        if(isset($_GET["archive"]) && ($_GET["archive"] == "true")){
+
+            $query->set( 'meta_query', array(
+                'relation' => 'OR',
+                array(
+                    'key' => '_av_scheda_progetto_anno_scolastico',
+                    'compare' => 'NOT EXISTS'
+                ),
+                array(
+                    'key' => '_av_scheda_progetto_anno_scolastico',
+                    'value' => av_get_current_anno_scolastico(),
+                    'compare' => '!=',
+                    'type' => 'numeric'
+                )
+            ));
+        }else{
+
+            $query->set( 'meta_query', array(
+                array(
+                    'key' => '_av_scheda_progetto_anno_scolastico',
+                    'value' => av_get_current_anno_scolastico(),
+                    'compare' => '=',
+                    'type' => 'numeric'
+                )
+            ));
+
+        }
+    }
+}
+
+add_action( 'pre_get_posts', 'av_schede_progetti_filters' );
+
 
 
 
@@ -202,7 +257,7 @@ add_action( 'pre_get_posts', 'av_eventi_filters' );
 add_filter( 'get_the_archive_title', function ($title) {
 global $wp_query;
     if ( is_tag() ) {
-        $title = __("Argomento", "curricoli").": ".single_cat_title( '', false );
+        $title = __("Argomento", "avanguardie").": ".single_cat_title( '', false );
     } elseif ( is_tag() ) {
         $title = single_tag_title( '', false );
     } elseif ( is_tax("tipologia-articolo") ) {
@@ -213,28 +268,31 @@ global $wp_query;
             }*/
     } elseif ( is_tax("tipologia-documento") ) {
         $title = single_term_title('', false);
-    } elseif ( is_tax("tipologia-cittadinanza") ) {
+    } elseif ( is_tax("percorsi-di-studio") ) {
+        //  $title = post_type_archive_title('', false)." ";
+        //$title .= single_term_title('', false);
         $title = single_term_title('', false);
-    }elseif ( is_tax("tipologia-disciplina") ) {
-        $title = single_term_title('', false);
-    }elseif ( is_post_type_archive("servizio") ) {
-        $title = __("Tutti i servizi", "curricoli");
+    } elseif ( is_post_type_archive("servizio") ) {
+        $title = __("Tutti i servizi", "avanguardie");
     } elseif ( is_post_type_archive("evento") ) {
-        $title = __("Calendario", "curricoli");
+        $title = __("Calendario", "avanguardie");
     } elseif ( is_tax("tipologia-servizio") ) {
-        // $title = __("Servizi per ", "curricoli").": ".single_term_title('', false);
+        // $title = __("Servizi per ", "avanguardie").": ".single_term_title('', false);
         $title = single_term_title('', false);
-    } elseif ( is_tax("tipologia-luogo") ) {
-        // $title = __("Servizi per ", "curricoli").": ".single_term_title('', false);
+    }elseif ( is_tax("tipologia-circolare") ) {
+        // $title = __("Servizi per ", "avanguardie").": ".single_term_title('', false);
+        $title = single_term_title('', false);
+    }elseif ( is_tax("tipologia-luogo") ) {
+        // $title = __("Servizi per ", "avanguardie").": ".single_term_title('', false);
         $title = single_term_title('', false);
     } elseif ( is_tax("tipologia-progetto") ) {
         $title = single_term_title('', false);
     }elseif ( is_post_type_archive("luogo") ) {
-        $title = __("I luoghi della scuola", "curricoli");
-    } elseif ( is_post_type_archive("scuola") ) {
-        $title = __("Organizzazione", "curricoli");
+        $title = __("I luoghi della scuola", "avanguardie");
+    } elseif ( is_post_type_archive("struttura") ) {
+        $title = __("Organizzazione", "avanguardie");
     } elseif ( is_post_type_archive("evento") ) {
-        $title = __("Eventi", "curricoli");
+        $title = __("Eventi", "avanguardie");
         if(isset($_GET["date"]) && $_GET["date"] != ""){
             $title .= " del ".$_GET["date"];
         }
@@ -245,98 +303,33 @@ global $wp_query;
         $title = post_type_archive_title('', false);
     }
 
-    $title = cdv_pluralize_string($title);
+    $title = av_pluralize_string($title);
     return $title;
 
 });
 
 
+
+
+
+
+
 /** add responsive class to table **/
 
-function cdv_bootstrap_responsive_table( $content ) {
+function av_bootstrap_responsive_table( $content ) {
     $content = str_replace( ['<table', '</table>'], ['<div class="table-responsive"><table class="table  table-striped table-bordered table-hover" ', '</table></div>'], $content );
 
     return $content;
 }
-add_filter( 'the_content', 'cdv_bootstrap_responsive_table' );
+add_filter( 'the_content', 'av_bootstrap_responsive_table' );
 
 
 
 
-/**
- * Admin header customization
- *
- */
-function cdv_admin_bar_customize_header() {
-    global $wp_admin_bar;
 
-    if ( current_user_can( 'read' ) ) {
-        $about_url = self_admin_url( 'about.php' );
-    } elseif ( is_multisite() ) {
-        $about_url = get_dashboard_url( get_current_user_id(), 'about.php' );
-    } else {
-        $about_url = false;
-    }
-    
-    $wp_admin_bar->add_group(
-        array(
-            'parent' => 'design-scuole',
-            'id'     => 'design-scuole-external',
-            'meta'   => array(
-                'class' => 'ab-sub-secondary',
-            ),
-        )
-    );
+add_action( 'wp_before_admin_bar_render', 'av_admin_bar_before_customize_header', -10 );
 
-    $wp_admin_bar->add_menu(
-        array(
-            'parent' => 'design-scuole-external',
-            'id'     => 'dsi-about-design',
-            'title'  => __( 'About Design Scuole' ),
-            'href'   => 'https://designers.italia.it/progetti/siti-web-scuole/',
-            'meta'  => array( 'target' => '_blank')
-        )
-    );
-
-
-    $wp_admin_bar->add_menu(
-        array(
-            'parent' => 'design-scuole',
-            'id'     => 'dsi-about-wp',
-            'title'  => __( 'About WordPress' ),
-            'href'   => $about_url,
-        )
-    );
-
-
-    $wp_admin_bar->add_menu(
-        array(
-            'parent' => 'design-scuole',
-            'id'     => 'dsi-github',
-            'title'  => __( 'Design su GitHub' ),
-            'href'   => "https://github.com/italia/design-scuole-wordpress-theme",
-            'meta'  => array( 'target' => '_blank')
-        )
-    );
-
-
-    if(current_user_can("manage_options")){
-        $wp_admin_bar->add_menu(
-            array(
-                'id'     => 'design-scuole-conf',
-                'title' => __( '<div class="dashicons-before dashicons-admin-tools" style="float:left; padding-top: 6px; padding-right:4px;"> </div>Configurazione', "curricoli" ),
-                'href'   => admin_url("admin.php?page=homepage")
-            )
-        );
-    }
-
-
-}
-add_action( 'admin_bar_menu', 'cdv_admin_bar_customize_header', -10 );
-
-add_action( 'wp_before_admin_bar_render', 'cdv_admin_bar_before_customize_header', -10 );
-
-function cdv_admin_bar_before_customize_header(){
+function av_admin_bar_before_customize_header(){
     global $wp_admin_bar;
 
     $wp_admin_bar->remove_menu("wp-logo");
@@ -356,9 +349,9 @@ add_action( 'admin_menu', function () {
     }
 });
 
-add_action( 'wp_before_admin_bar_render', 'cdv_before_admin_bar_render' );
+add_action( 'wp_before_admin_bar_render', 'av_before_admin_bar_render' );
 
-function cdv_before_admin_bar_render()
+function av_before_admin_bar_render()
 {
     global $wp_admin_bar;
 
@@ -370,7 +363,7 @@ function cdv_before_admin_bar_render()
  * abilito edit utenti agli admin di un netork multisite
  */
 
-function cdv_admin_users_caps( $caps, $cap, $user_id, $args ){
+function av_admin_users_caps( $caps, $cap, $user_id, $args ){
 
     foreach( $caps as $key => $capability ){
 
@@ -394,7 +387,7 @@ function cdv_admin_users_caps( $caps, $cap, $user_id, $args ){
 
     return $caps;
 }
-add_filter( 'map_meta_cap', 'cdv_admin_users_caps', 1, 4 );
+add_filter( 'map_meta_cap', 'av_admin_users_caps', 1, 4 );
 remove_all_filters( 'enable_edit_any_user_configuration' );
 add_filter( 'enable_edit_any_user_configuration', '__return_true');
 
@@ -402,7 +395,7 @@ add_filter( 'enable_edit_any_user_configuration', '__return_true');
  * Checks that both the editing user and the user being edited are
  * members of the blog and prevents the super admin being edited.
  */
-function cdv_edit_permission_check() {
+function av_edit_permission_check() {
     global $current_user, $profileuser;
 
     $screen = get_current_screen();
@@ -418,7 +411,5 @@ function cdv_edit_permission_check() {
     }
 
 }
-add_filter( 'admin_head', 'cdv_edit_permission_check', 1, 4 );
-
-
+add_filter( 'admin_head', 'av_edit_permission_check', 1, 4 );
 

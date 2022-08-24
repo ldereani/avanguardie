@@ -8,10 +8,10 @@
  */
 global $post, $autore, $luogo, $c, $badgeclass;
 get_header();
+
 ?>
     <main id="main-container" class="main-container greendark">
         <?php 
-        get_template_part("template-parts/home/navigation");
 
         get_template_part("template-parts/common/breadcrumb"); 
         ?>
@@ -28,7 +28,7 @@ get_header();
                         <div class="main-content col-lg-9 col-md-8 order-lg-1">
                             <article class="article-wrapper pt-4 testo-contenuto">
                                 <div class="row variable-gutters">
-                                    <div class="col-lg-8 wysiwig-text dim-testo-normale">
+                                    <div class="col-lg-8 wysiwig-text">
                                         <?php
                                         the_content();
                                         ?>
@@ -49,7 +49,7 @@ get_header();
                                 </div>
                                 <div class="row variable-gutters">
                                     <div class="col-lg-12">
-                                        <?php get_template_part( "template-parts/single/bottom" ); ?>
+                                        <?php // get_template_part( "template-parts/single/bottom" ); ?>
                                     </div><!-- /col-lg-9 -->
                                 </div><!-- /row -->
                             </article>

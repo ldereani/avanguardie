@@ -8,7 +8,7 @@
  */
 if(!function_exists("av_get_option")) {
 	function av_get_option( $key = '', $type = "av_options", $default = false ) {
-        /*
+        
 		if ( function_exists( 'cmb2_get_option' ) ) {
 			// Use cmb2_get_option as it passes through some key filters.
 			return cmb2_get_option( $type, $key, $default );
@@ -24,10 +24,203 @@ if(!function_exists("av_get_option")) {
 		} elseif ( is_array( $opts ) && array_key_exists( $key, $opts ) && false !== $opts[ $key ] ) {
 			$val = $opts[ $key ];
 		}
-*/
+
 		return $val;
 	}
 }
+/**
+ * Define members check user function if not defined and return true
+ * @param  int     $user_id
+ * @param  int     $post_id
+ * @return bool
+ */
+if(!function_exists("av_members_can_user_view_post")) {
+    function av_members_can_user_view_post($user_id, $post_id) {
+        if(!function_exists("members_can_user_view_post")) {
+            return true;
+        }else{
+            return members_can_user_view_post($user_id, $post_id);
+        }
+
+    }
+}
+
+/**
+ * Wrapper function for get_post_meta
+ * @param string $key
+ * @return mixed meta_value
+ */
+if(!function_exists("av_get_meta")){
+	function av_get_meta( $key = '', $prefix = "", $post_id = "") {
+        if ( ! av_members_can_user_view_post(get_current_user_id(), $post_id) ) return false;
+
+		if($post_id == "")
+			$post_id = get_the_ID();
+
+		$post_type = get_post_type($post_id);
+
+		if($prefix != "")
+			return get_post_meta( $post_id, $prefix.$key, true );
+
+        if (is_singular("evento")  || (isset($post_type) && $post_type == "evento")) {
+			$prefix = '_av_evento_';
+			return get_post_meta( $post_id, $prefix . $key, true );
+		}else if (is_singular("documento")  || (isset($post_type) && $post_type == "documento")) {
+			$prefix = '_av_documento_';
+			return get_post_meta( $post_id, $prefix . $key, true );
+		}else if (is_singular("post")  || (isset($post_type) && $post_type == "post")) {
+			$prefix = '_av_articolo_';
+			return get_post_meta( $post_id, $prefix . $key, true );
+		}
+
+		return get_post_meta( $post_id, $key, true );
+	}
+}
+
+
+if(!function_exists("av_get_term_meta")){
+    function av_get_term_meta( $key , $prefix, $term_id) {
+            return get_term_meta($term_id, $prefix.$key, true );
+
+    }
+}
+/**
+ * Wrapper function for user avatar
+ * @param object user
+ * @return string url
+ */
+if(!function_exists("av_get_user_avatar")){
+	function av_get_user_avatar( $user = false, $size=250 ) {
+		if(!$user && is_user_logged_in()){
+			$user = wp_get_current_user();
+		}
+        $foto_id = null;
+		$foto_url = get_the_author_meta('_av_persona_foto', $user->ID);
+		if($foto_url)
+            $foto_id = attachment_url_to_postid($foto_url);
+
+        if(isset($foto_id) && $foto_id)
+            $avatar = wp_get_attachment_image_url($foto_id, "item-thumb");
+		else
+		    $avatar = get_avatar_url( $user->ID, array("size" => $size) );
+
+		$avatar = apply_filters("av_avatar_url", $avatar, $user);
+		return $avatar;
+	}
+}
+
+
+add_filter( 'get_avatar' , 'av_custom_avatar' , 1 , 5 );
+
+function av_custom_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
+    $user = false;
+
+    if ( is_numeric( $id_or_email ) ) {
+
+        $id = (int) $id_or_email;
+        $user = get_user_by( 'id' , $id );
+
+    } elseif ( is_object( $id_or_email ) ) {
+
+        if ( ! empty( $id_or_email->user_id ) ) {
+            $id = (int) $id_or_email->user_id;
+            $user = get_user_by( 'id' , $id );
+        }
+
+    } else {
+        $user = get_user_by( 'email', $id_or_email );
+    }
+
+    if ( $user && is_object( $user ) ) {
+
+        $foto_url = get_the_author_meta('_av_persona_foto', $user->ID);
+        if($foto_url)
+            $foto_id = attachment_url_to_postid($foto_url);
+
+        if(isset($foto_id) && $foto_id) {
+            $avatar = wp_get_attachment_image_url($foto_id, "item-thumb");
+            $avatar = "<img alt='{$alt}' src='{$avatar}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
+        }
+    }
+
+    return $avatar;
+}
+
+
+
+/**
+ * Wrapper function for user role
+ * @param object user
+ * @return string role
+ */
+if(!function_exists("av_get_user_role")) {
+	function av_get_user_role( $user = false ) {
+		global $wp_roles;
+
+
+		if ( ! $user && is_user_logged_in() ) {
+			$user = wp_get_current_user();
+		}
+
+        $ruolo_scuola = get_the_author_meta('_dsi_persona_ruolo_scuola', $user->ID);
+        $tipo_posto = get_the_author_meta('_dsi_persona_tipo_posto', $user->ID);
+        $ruolo_non_docente = get_the_author_meta('_dsi_persona_ruolo_non_docente', $user->ID);
+
+        $str_ruolo = "";
+        if($ruolo_scuola == "dirigente"){
+            $str_ruolo .= "Dirigente Scolastico ";
+        }else if($ruolo_scuola == "docente"){
+            $str_ruolo .= "Docente ";
+
+            if($tipo_posto == "sostegno"){
+                $str_ruolo .= "di sostegno ";
+            }
+
+        }else if($ruolo_scuola == "personaleata"){
+
+            if($ruolo_non_docente == "direttore-amministrativo"){
+                $str_ruolo .= "Direttore amministrativo ";
+            }else if($ruolo_non_docente == "tecnico"){
+                $str_ruolo .= "Personale tecnico ";
+            }else if($ruolo_non_docente == "amministrativo"){
+                $str_ruolo .= "Personale amministrativo ";
+            }else if($ruolo_non_docente == "collaboratore"){
+                $str_ruolo .= "Collaboratore scolastico";
+            }else{
+                $str_ruolo .= "Non docente ";
+            }
+
+
+        }
+
+        return $str_ruolo;
+	}
+}
+
+
+
+
+
+if(!function_exists("av_pluralize_string")) {
+    function av_pluralize_string($string){
+    switch ($string){
+        
+        case "Documento Generico":
+            $string = "Documenti Generici";
+            break;
+
+        
+        case "":
+            $string = "";
+            break;
+
+    }
+
+        return $string;
+    }
+}
+
+
 /**
  * funzione per la gestione del nome autore
  */
@@ -137,14 +330,10 @@ function av_bootstrap_pagination( \WP_Query $wp_query = null, $echo = true ) {
 function av_get_post_types_grouped($type = "", $tag = false){
 	if($type == "")
 		$type = "any";
-	if($type === "school")
-		$post_types = array("documento", "luogo", "scuola", "page");
-	else if($type === "news")
+	if($type === "news")
 		$post_types = array("evento", "post");
-	else if($type === "education")
-		$post_types = array("scheda_didattica", "scheda_esperienza"); // todo: programma materia 		$post_types = array("programma_materia", "scheda_didattica", "scheda_esperienza");
 	else
-		$post_types = array("evento", "post","documento", "luogo", "scheda_didattica", "scheda_esperienza", "servizio", "indirizzo", "scuola", "page"); // todo: programma materia $post_types = array("evento", "post", "documento", "luogo", "materia", "programma_materia", "scheda_didattica", "scheda_esperienza", "servizio", "scuola", "page");
+		$post_types = array("evento", "post","documento", "page");
 
 	// rimuovo post types che non hanno la categoria
 	if($tag){
@@ -311,5 +500,58 @@ if(!function_exists("av_truncate")) {
         }
 
         return $string;
+    }
+}
+/**
+ * get group related to current page
+ */
+if(!function_exists("av_get_current_group")) {
+    function av_get_current_group() {
+        if (is_front_page()) {
+            return null;
+        }
+        if (is_tax()) {
+            $taxonomy = get_queried_object() -> taxonomy;
+            $term = get_queried_object() -> slug;
+            if ($taxonomy == 'tipologia-documento'){
+                $tipo_post ='documento';
+            }
+            if ($taxonomy == 'tipologia-articolo'){
+                $tipo_post = 'post';
+            }
+            
+            return  av_get_post_types_group($tipo_post);
+        }
+        if (is_author()) {
+            return 'avanguardie';
+        }
+        if ( is_archive()  ) {
+            $tipo_post = get_queried_object() -> name;
+            return  av_get_post_types_group($tipo_post);
+        }
+        if (is_page()) {
+            $rel_url = wp_make_link_relative(get_permalink());
+            $rel_url =  preg_replace('/^' . preg_quote('/', '/') . '/', '', $rel_url);
+            $group_slug = strtok($rel_url, '/');
+            switch($group_slug){
+                case 'la-scuola':
+                    return 'school';
+                case 'didattica' :
+                    return 'education';
+                case 'novita': case 'evento': case 'circolare':
+                    return 'news';
+                case 'servizi':
+                    return 'service';
+            }
+            return null;
+        }
+        $current_post_type = get_post_type();
+        if ($current_post_type == 'documento') {
+            $term = wp_get_post_terms(get_the_ID(),'tipologia-documento');
+        }
+        if ( ($current_post_type != false)) {
+            return av_get_post_types_group(get_post_type());
+        }
+        return null;
     }
 }

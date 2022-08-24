@@ -182,7 +182,7 @@ class Breadcrumb_Trail {
 
 			// Open the unordered list.
 			$breadcrumb .= sprintf(
-				'<%s class="trail-items" itemscope itemtype="http://schema.org/BreadcrumbList">',
+				'<%s class="breadcrumbs-list" data-element="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">',
 				tag_escape( $this->args['list_tag'] )
 			);
 
@@ -204,7 +204,7 @@ class Breadcrumb_Trail {
 
 				// Wrap the item with its itemprop.
 				$item = ! empty( $matches )
-					? preg_replace( '/(<a.*?)([\'"])>/i', '$1$2 itemprop=$2item$2>', $item )
+					? preg_replace( '/(<a.*?)([\'"])>/i', '$1$2 itemprop=$2item$2 aria-label="Vai alla pagina '.$matches[2].'">', $item )
 					: sprintf( '<span itemprop="item">%s</span>', $item );
 
 				// Add list item classes.
@@ -217,7 +217,7 @@ class Breadcrumb_Trail {
 					$item_class .= ' active';
 
 				// Create list item attributes.
-				$attributes = 'itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="' . $item_class . '"';
+				$attributes = 'itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="' . $item_class . '" ';
 
 				// Build the meta position HTML.
 				$meta = sprintf( '<meta itemprop="position" content="%s" />', absint( $item_position ) );
@@ -342,25 +342,28 @@ class Breadcrumb_Trail {
 			// todo: rendere dinamiche le url del breadcrumb in base al template di pagina
 			// If viewing an archive page.
 			elseif ( is_archive() ) {
-                if(is_post_type_archive(array("luogo", "documento","scuola")))
-                    $this->items[] =  "<a href='".home_url("il-progetto")."'>".__("Il Progetto", "curricoli")."</a>";
+                if(is_post_type_archive(array("luogo", "documento","struttura")))
+                    $this->items[] =  "<a href='".home_url("la-scuola")."'>".__("La Scuola", "design_scuole_italia")."</a>";
 
-                else if(is_post_type_archive(array("evento")))
-                    $this->items[] =  "<a href='".home_url("novita")."'>".__("Novità", "curricoli")."</a>";
+                else if(is_post_type_archive(array("indirizzo")))
+                    $this->items[] =  "<a href='".home_url("servizi")."'>".__("Servizi", "design_scuole_italia")."</a>";
 
-                else if(is_post_type_archive(array("scheda_didattica", "scheda_esperienza")))
-                    $this->items[] =  "<a href='".home_url("didattica")."'>".__("Didattica", "curricoli")."</a>";
+                else if(is_post_type_archive(array("circolare", "evento")))
+                    $this->items[] =  "<a href='".home_url("novita")."'>".__("Novità", "design_scuole_italia")."</a>";
+
+                else if(is_post_type_archive(array("scheda_didattica", "scheda_progetto")))
+                    $this->items[] =  "<a href='".home_url("didattica")."'>".__("Didattica", "design_scuole_italia")."</a>";
 
                 if(is_post_type_archive(array("servizio"))){
-                    $this->items[] =  "<a href='".home_url("servizi")."'>".__("Servizi", "curricoli")."</a>";
-                    $this->items[] =  __("Tutti i Servizi", "curricoli");
+                    $this->items[] =  "<a href='".home_url("servizi")."'>".__("Servizi", "design_scuole_italia")."</a>";
+                    $this->items[] =  __("Tutti i Servizi", "design_scuole_italia");
                 }else if ( is_post_type_archive() ){
                     $this->add_post_type_archive_items();
 
                 }
                 elseif ( is_category() || is_tag() || is_tax() ){
                     if(is_tax(array("tipologia-articolo")))
-                        $this->items[] =  "<a href='".home_url("novita")."'>".__("Novità", "curricoli")."</a>";
+                        $this->items[] =  "<a href='".home_url("novita")."'>".__("Novità", "design_scuole_italia")."</a>";
 
                     $this->add_term_archive_items();
                 }
@@ -733,10 +736,10 @@ class Breadcrumb_Trail {
 
 		// Add the author's display name to the trail end.
 		if ( is_paged() )
-			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_author_posts_url( $user_id ) ), cdv_get_display_name( $user_id ) );
+			$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_author_posts_url( $user_id ) ), av_get_display_name( $user_id ) );
 
 		elseif ( true === $this->args['show_title'] )
-			$this->items[] = cdv_get_display_name( $user_id );
+			$this->items[] = av_get_display_name( $user_id );
 	}
 
 	/**
@@ -1238,7 +1241,7 @@ class Breadcrumb_Trail {
 
 				// If using the %author% tag, add a link to the post author archive.
 				elseif ( '%author%' == $tag )
-					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_author_posts_url( $post->post_author ) ), cdv_get_display_name( $post->post_author ) );
+					$this->items[] = sprintf( '<a href="%s">%s</a>', esc_url( get_author_posts_url( $post->post_author ) ), av_get_display_name( $post->post_author ) );
 
 				// If using the %category% tag, add a link to the first category archive to match permalinks.
 				elseif ( taxonomy_exists( trim( $tag, '%' ) ) ) {

@@ -1,7 +1,7 @@
 <?php
 global $post, $licenza;
 ?>
-<div class="article-footer" style="padding-bottom:5px; padding-top:5px; background-color:black; margin-left:0em;text-transform:uppercase;color:#dddac5;letter-spacing:0em;font-family:YAD0xLc7TF0-2;line-height:1.1em;direction:ltr;text-align:center;">
+<div class="article-footer font-corpo">
     <p><strong><?php _e("Pubblicato", "avanguardie"); ?>:</strong> <?php
 		$date_publish = new DateTime($post->post_date);
 		echo $date_publish->format('d.m.Y');
