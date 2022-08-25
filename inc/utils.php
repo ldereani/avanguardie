@@ -372,7 +372,7 @@ function av_get_post_types_group($post_type){
  */
 function av_get_post_types_color_class($post_type) {
 	$class = "greendark";
-	$group = cdv_get_post_types_group($post_type);
+	$group = av_get_post_types_group($post_type);
 	if($group == "school")
 		$class = "redbrown";
 	else if($group == "education")
@@ -390,7 +390,7 @@ function av_get_post_types_color_class($post_type) {
  */
 function av_get_post_types_icon_class($post_type) {
 	$icon = "newspaper";
-	$group = cdv_get_post_types_group($post_type);
+	$group = av_get_post_types_group($post_type);
 	if($group == "school")
 		$icon = "school-building";
 	else if($group == "education")

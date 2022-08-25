@@ -1,16 +1,13 @@
 <?php
 /**
- * Template Name: archive
+ * The template for displaying archive
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#archive
  *
- * @package Avanguardia
+ * @package Avanguardie
  */
 
 $class = "petrol";
-
-//if(is_post_type_archive("scheda_didattica"))
-//    $class = "bluelectric";
 
 get_header();
 ?>
@@ -23,8 +20,8 @@ get_header();
                 <div class="row variable-gutters">
                     <div class="col-lg-5 col-md-8 offset-lg-3">
                         <div class="section-title">
-							<?php the_archive_title( '<h2 class="mb-0">', '</h2>' ); ?>
-							<?php the_archive_description("<p>","</p>"); ?>
+							<?php the_archive_title( '<h2 class="font-titoli mb-0">', '</h2>' ); ?>
+							<?php the_archive_description("<p class=\"font-titoli\">","</p>"); ?>
                         </div><!-- /title-section -->
                     </div><!-- /col-lg-5 col-md-8 offset-lg-2 -->
 
@@ -39,8 +36,8 @@ get_header();
 
         <section class="section bg-white border-top border-bottom d-block d-lg-none">
             <div class="container d-flex justify-content-between align-items-center py-3">
-                <h3 class="h6 text-uppercase mb-0 label-filter"><strong><?php _e("Filtri", "avanguardie"); ?></strong></h3>
-                <a class="toggle-search-results-mobile toggle-menu menu-search push-body mb-0" href="#" aria-label="filtri">
+                <h3 class="h6 text-uppercase mb-0 label-filter"><strong><?php _e("Filtri", "design_scuole_italia"); ?></strong></h3>
+                <a class="toggle-search-results-mobile toggle-menu menu-search push-body mb-0" href="#">
                     <svg class="svg-filters"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-filters"></use></svg>
                 </a>
             </div>
@@ -51,24 +48,17 @@ get_header();
                     <div class="col-lg-3 bg-white bg-white-left">
 						<?php get_template_part("template-parts/search/filters", "argomento"); ?>
                     </div>
-<?php
-// GABOLA
-$allPostsWPQuery = new WP_Query(array('post_type'=>'post', 'post_status'=>'publish', 'posts_per_page'=>-1));
-//if ($allPostsWPQuery->have_posts()): while ($allPostsWPQuery->have_posts()) : $allPostsWPQuery->the_post();
-?>
-
                     <div class="col-lg-7 offset-lg-1 pt84">
-						<?php if ( $allPostsWPQuery->have_posts() ) : ?>
+						<?php if ( have_posts() ) : ?>
 							<?php
 							/* Start the Loop */
-							while ( $allPostsWPQuery->have_posts() ) :
-								$allPostsWPQuery->the_post();
-                                
+							while ( have_posts() ) :
+								the_post();
 								get_template_part( 'template-parts/list/article', get_post_type() );
 
 							endwhile;
 							?>
-                            <nav class="pagination-wrapper justify-content-center col-12" aria-label="Navigazione centrata">
+                            <nav class="pagination-wrapper" aria-label="Navigazione della pagina">
 								<?php echo av_bootstrap_pagination(); ?>
                             </nav>
 						<?php

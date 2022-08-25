@@ -45,6 +45,10 @@ require get_template_directory() . '/inc/utils.php';
  */
 require get_template_directory() . '/inc/breadcrumb.php';
 
+/**
+ * Activation Hooks
+ */
+require get_template_directory() . '/inc/activation.php';
 
 /**
  * Actions & Hooks
@@ -259,7 +263,29 @@ add_action( 'wp_enqueue_scripts', 'av_scripts' );
 
 
 
+/*
+ * Set post views count using post meta
+ */
+function set_views($post_ID) {
+	$key = 'views';
+	$count = get_post_meta($post_ID, $key, true); //retrieves the count
 
+	if($count == ''){ //check if the post has ever been seen
+
+		//set count to 0
+		$count = 0;
+
+		//just in case
+		delete_post_meta($post_ID, $key);
+
+		//set number of views to zero
+		add_post_meta($post_ID, $key, '0');
+
+	} else{ //increment number of views
+		$count++;
+		update_post_meta($post_ID, $key, $count);
+	}
+}
 /**
  * Wrapper function for get_post_meta
  * @param string $key
@@ -307,4 +333,60 @@ if(!function_exists("av_get_argomenti_of_post")) {
 		$argomenti_terms = wp_get_object_terms( $singular->ID, 'post_tag' );
 		return $argomenti_terms;
 	}
+}
+
+/**
+ * Event date start/stop
+ * @param $post
+ *
+ */
+function av_get_date_evento($post){
+	if($post->post_type == "evento")
+		$prefix = '_av_evento_';
+
+	$ret = "";
+	$timestamp_inizio = av_get_meta("timestamp_inizio", $prefix, $post->ID);
+	$timestamp_fine= av_get_meta("timestamp_fine", $prefix, $post->ID);
+	if($timestamp_inizio >= $timestamp_fine){
+		$ret .=  date_i18n("j F Y", $timestamp_inizio);
+		//$ret .= __(" alle ", "avanguardie");
+		//$ret .=  date_i18n("H:i", $timestamp_inizio);
+		return $ret;
+	}
+
+	$data_inizio = date_i18n("j F Y", $timestamp_inizio);
+	$data_fine = date_i18n("j F Y", $timestamp_fine);
+	$ora_inizio = date_i18n("H:i", $timestamp_inizio);
+	$ora_fine = date_i18n("H:i", $timestamp_fine);
+	if($data_inizio == $data_fine){
+		$ret .= __("Il ", "avanguardie");
+		$ret .= $data_inizio;
+		/*
+		if($post->post_type == "evento"){
+			$ret .= __(" dalle ", "avanguardie");
+			$ret .= $ora_inizio;
+			$ret .= __(" alle ", "avanguardie");
+			$ret .= $ora_fine;
+
+		}*/
+
+	}else{
+		$ret .= __("dal ", "avanguardie");
+		$ret .= $data_inizio;
+		/*
+		if($post->post_type == "evento") {
+			$ret .= __( " alle ", "avanguardie" );
+			$ret .= $ora_inizio;
+		}*/
+		$ret .= __(" al ", "avanguardie");
+		$ret .= $data_fine;
+		/*
+		if($post->post_type == "evento") {
+			$ret .= __( " alle ", "avanguardie" );
+			$ret .= $ora_fine;
+		}*/
+	}
+
+	return $ret;
+
 }

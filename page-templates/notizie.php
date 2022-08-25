@@ -17,11 +17,14 @@ get_header();
 
 			get_template_part("template-parts/hero/notizie");
 
-			$tipologie_notizie = "";
+			$tipologie_notizie = av_get_option("tipologie_notizie", "notizie");
+			
 			$ct=1;
 			if(is_array($tipologie_notizie) && count($tipologie_notizie)){
 				foreach ( $tipologie_notizie as $id_tipologia_notizia ) {
+					
 					$tipologia_notizia = get_term_by("id", $id_tipologia_notizia, "tipologia-articolo");
+					
 					get_template_part("template-parts/home/notizie", "tipologie");
 					$ct++;
 				}

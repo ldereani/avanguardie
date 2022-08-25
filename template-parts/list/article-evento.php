@@ -1,7 +1,6 @@
 <?php
 global $post;
 
-die("MERDA");
 
 $image_url = get_the_post_thumbnail_url($post, "article-simple-thumb");
 $class = av_get_post_types_color_class($post->post_type);
@@ -13,8 +12,8 @@ if(!$excerpt)
     $excerpt = get_the_excerpt($post);
 
 // $argomenti = av_get_argomenti_of_post();
-$timestamp_inizio = av_get_meta("timestamp_inizio", "_dsi_evento_", $post->ID);
-$timestamp_fine= av_get_meta("timestamp_fine", "_dsi_evento_", $post->ID);
+$timestamp_inizio = av_get_meta("timestamp_inizio", "_av_evento_", $post->ID);
+$timestamp_fine= av_get_meta("timestamp_fine", "_av_evento_", $post->ID);
 ?>
 <a class="presentation-card-link" href="<?php the_permalink(); ?>">
 <article class="card card-bg card-article card-article-<?php echo $class; ?> cursorhand" >
@@ -30,7 +29,7 @@ $timestamp_fine= av_get_meta("timestamp_fine", "_dsi_evento_", $post->ID);
             <?php } ?>
         </div>
         <div class="card-article-content">
-            <h2 class="h3"><?php the_title(); ?></h2>
+            <h2 class="h3 font-titoli"><?php the_title(); ?></h2>
             <p><?php echo $excerpt; ?></p>
             <?php /* if(is_array($argomenti) && count($argomenti)) { ?>
                     <div class="badges">

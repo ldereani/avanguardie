@@ -22,7 +22,7 @@ global $item;
 		<div class="col-lg-7">
 			<div class="article-content">
 				<?php
-				$argomenti = dsi_get_argomenti_of_post($item);
+				$argomenti = av_get_argomenti_of_post($item);
 				if(is_array($argomenti) && count($argomenti)) {
 					$c=0;
 					?>

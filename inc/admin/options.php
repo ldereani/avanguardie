@@ -344,10 +344,10 @@ function av_register_main_options_metabox() {
 			'maxlength'  => '140'
 		),
 	) );
-/*
+
 	$notizie_options->add_field( array(
 			'name'       => __('Tipologie Articoli', 'avanguardie' ),
-			'desc' => __( 'Articoli aggregati per tipologie (es: articoli, circolari, notizie), . Seleziona le tipologie da mostrare. ', 'avanguardie' ),
+			'desc' => __( 'Articoli aggregati per tipologie (es: articoli, notizie), . Seleziona le tipologie da mostrare. ', 'avanguardie' ),
 			'id' => $prefix . 'tipologie_notizie',
 			'type'    => 'pw_multiselect',
 			'options' => av_get_tipologia_articoli_options(),
@@ -356,7 +356,7 @@ function av_register_main_options_metabox() {
 			),
 		)
 	);
-*/
+
 
     
 

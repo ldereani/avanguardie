@@ -17,7 +17,7 @@ if(is_singular()){
 ?><div class="actions-wrapper actions-main">
     <a class="toggle-actions" href="#" title="Vedi azioni" data-target="#modal-more-items" data-toggle="modal">
         <svg class="it-more-items"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#it-more-items"></use></svg>
-        <span><?php _e("Stampa / Condividi", "avanguardie"); ?></span>
+        <span class="font-titoli"><?php _e("Stampa / Condividi", "avanguardie"); ?></span>
     </a>
     <div class="modal fade modal-actions" id="modal-more-items" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
