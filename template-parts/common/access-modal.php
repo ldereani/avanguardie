@@ -16,10 +16,10 @@
                         </div>
                         <div class="row variable-gutters justify-content-center pt-4 pt-xl-5">
                             <div class="col-lg-4">
-                                <p class="text-intro"><?php echo cdv_get_option("login_messaggio", "login"); ?></p>
+                                <p class="text-intro"><?php echo av_get_option("login_messaggio", "login"); ?></p>
                                 <div class="access-buttons">
                                     <?php
-                                    $link_esterni = cdv_get_option("link_esterni", "login");
+                                    $link_esterni = av_get_option("link_esterni", "login");
                                     if(isset($link_esterni) && is_array($link_esterni) && count($link_esterni)>0) {
                                         foreach ($link_esterni as $item) {
                                             ?>
