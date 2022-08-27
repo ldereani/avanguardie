@@ -44,7 +44,7 @@ if($img_identita == ""){
             </div><!-- /col-md-6 -->
         </div><!-- /row -->
     </div><!-- /container -->
-    <?php $img_identita = get_stylesheet_directory_uri(). "/assets/images/menossi.jpg"; ?>
+    <?php $img_identita = get_stylesheet_directory_uri(). "/assets/images/sole.jpg"; ?>
     <div class="hero-img d-none d-md-block" style="background-image: url('<?php echo $img_identita; ?>');">
 
     </div>
