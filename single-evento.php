@@ -339,7 +339,7 @@ $user_can_view_post = true;
                     </div><!-- /row -->
                 </div><!-- /container -->
             </section>
-
+            <?php if ( is_array( $gallery ) && count( $gallery ) > 0 ) { ?>
             <section class="section bg-gray-light py-5" id="art-par-04">
                 <div class="container py-4">
                     <div class="title-section text-center mb-5">
@@ -347,7 +347,7 @@ $user_can_view_post = true;
                     </div><!-- /title-large -->
                     <div class="row variable-gutters">
                         <div class="col">
-                        <?php if ( is_array( $gallery ) && count( $gallery ) > 0 ) { ?>
+                        
                             <div class="it-carousel-wrapper simple-two-carousel splide" data-bs-carousel-splide>
                                 <div class="splide__track">
                                     <ul class="splide__list">
@@ -355,12 +355,12 @@ $user_can_view_post = true;
                                     </ul>
                                 </div><!-- /carousel-simple -->
                             </div>
-                        <?php } ?>
+                      
                         </div><!-- /col -->
                     </div><!-- /row -->
                 </div><!-- /container -->
             </section>
-
+            <?php } ?>
 			<?php get_template_part("template-parts/single/more-posts"); ?>
 
 		<?php  	endwhile; // End of the loop. ?>
