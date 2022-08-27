@@ -46,7 +46,7 @@ if(trim($citazione) != ""){
 							<h3 class="mt-0 font-titoli colore-primario h2"><?php echo $citazione; ?></h3>
 							<div class="mb-0 font-corpo colore-terziario font-weight-normal h4"><?php echo $citazione_descrizione; ?></div>
 						</div>
-						<img class="d-none d-md-block align-self-center mr-3 float-right" style="width: 30%" src="<?php echo $img_logo; ?>" alt="Logo">
+						<img class="d-none d-md-block align-self-center mr-3" style="width: 30%" src="<?php echo $img_logo; ?>" alt="Logo">
 					</div>
 				</div><!-- /col-md-10 -->
 			</div><!-- /row -->
