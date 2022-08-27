@@ -13,7 +13,7 @@ if(trim($chi_siamo) != ""){
 			<div class="row variable-gutters justify-content-center">
 				<div class="col-md-10">
 					<div class="media">
-						<img class="align-self-center mr-3 float-right" style="width: 30%" src="<?php echo $img_logo; ?>" alt="Logo">
+						<img class="d-none d-md-block align-self-center mr-3 float-right" style="width: 30%" src="<?php echo $img_logo; ?>" alt="Logo">
 						<div class="media-body">
 							<h1 class="mt-0 font-titoli colore-terziario"><?php echo "Chi siamo"; ?></h1>
 							<div class="mb-0 font-corpo colore-terziario font-weight-normal h4"><?php echo $chi_siamo; ?></div>
