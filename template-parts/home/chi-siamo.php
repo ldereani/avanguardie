@@ -3,7 +3,7 @@ global $post;
 
 $chi_siamo = av_get_option("chi_siamo", "av_options");
 $img_logo = get_stylesheet_directory_uri(). "/assets/images/raggi.svg";
-$landing_url = av_get_template_page_url("page-templates/notizie.php");
+$landing_url = "/chi-siamo";
 
 if(trim($chi_siamo) != ""){
 	?>
@@ -18,7 +18,7 @@ if(trim($chi_siamo) != ""){
 							<h1 class="mt-0 font-titoli colore-terziario"><?php echo "Chi siamo"; ?></h1>
 							<div class="mb-0 text-justify font-corpo colore-terziario font-weight-normal h4"><?php echo $chi_siamo; ?></div>
 							<?php if($landing_url){ ?>
-                        		<a class="btn btn-sm btn-outline-white mt-4" href="<?php echo $landing_url; ?>" aria-label="Vai alla scuola"><?php _e("Vai a chi siamo", "avanguardie"); ?></a>
+                        		<a class="btn btn-sm btn-outline-white mt-4" href="<?php echo $landing_url; ?>" aria-label="Vai a chi siamo"><?php _e("Vai a chi siamo", "avanguardie"); ?></a>
                     		<?php } ?>
 						</div>
 					</div>
