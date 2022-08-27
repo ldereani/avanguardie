@@ -33,6 +33,7 @@ get_header();
 
 
  //           get_template_part("template-parts/home/activities");          
+ //           get_template_part("template-parts/home/rsvp");          
             get_template_part("template-parts/home/banner");
 
             ?>
