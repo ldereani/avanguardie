@@ -44,7 +44,7 @@ if(trim($citazione) != ""){
 					<div class="media">
 						<div class="media-body">
 							<h3 class="mt-0 font-titoli colore-primario h2"><?php echo $citazione; ?></h3>
-							<div class="mb-0 text-justify font-corpo colore-terziario font-weight-normal h4"><?php echo $citazione_descrizione; ?></div>
+							<div class="mb-0 font-corpo colore-terziario font-weight-normal h4"><?php echo $citazione_descrizione; ?></div>
 						</div>
 						<img class="align-self-center mr-3 float-right" style="width: 30%" src="<?php echo $img_logo; ?>" alt="Logo">
 					</div>

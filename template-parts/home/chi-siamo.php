@@ -16,7 +16,7 @@ if(trim($chi_siamo) != ""){
 						<img class="align-self-center mr-3 float-right" style="width: 30%" src="<?php echo $img_logo; ?>" alt="Logo">
 						<div class="media-body">
 							<h1 class="mt-0 font-titoli colore-terziario"><?php echo "Chi siamo"; ?></h1>
-							<div class="mb-0 text-justify font-corpo colore-terziario font-weight-normal h4"><?php echo $chi_siamo; ?></div>
+							<div class="mb-0 font-corpo colore-terziario font-weight-normal h4"><?php echo $chi_siamo; ?></div>
 							<?php if($landing_url){ ?>
                         		<a class="btn btn-sm btn-outline-white mt-4" href="<?php echo $landing_url; ?>" aria-label="Vai a chi siamo"><?php _e("Vai a chi siamo", "avanguardie"); ?></a>
                     		<?php } ?>
