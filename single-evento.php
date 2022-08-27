@@ -269,7 +269,7 @@ $user_can_view_post = true;
                                                 </li><?php } ?>
                                             <?php if (av_get_meta("patrocinato") != "") { ?>
                                                 <li><strong
-                                                        class="mr-2"><?php _e("Patrocinato da:", "avanguardie"); ?></strong> <?php echo av_get_meta("patrocinato"); ?>
+                                                        class="mr-2"><?php _e("Curato da:", "avanguardie"); ?></strong> <?php echo av_get_meta("patrocinato"); ?>
                                                 </li><?php } ?>
                                             <?php if (av_get_meta("sponsor") != "") { ?>
                                                 <li><strong
