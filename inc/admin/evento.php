@@ -307,14 +307,27 @@ function av_add_eventi_metaboxes() {
 		),
 	) );
 	
+	$cmb_undercontent->add_field( array(
+		'id'      => $prefix . 'organizzato_da_progetto',
+		'name'    => __( 'Organizzato dal progetto', 'avanguardie' ),
+		'type'             => 'select',
+		'show_option_none' => false,
+		'options'          => array(
+			'si' => __( 'Si', 'avanguardie' ),
+			'no'   => __( 'No', 'avanguardie' )
+		),
+		'attributes' => array(
+			'required' => 'required'
+		),
+	) );
 
 	$cmb_undercontent->add_field( array(
 			'id' => $prefix . 'contatto_telefono',
 			'name'       => __('Contatto: telefono ', 'avanguardie' ),
-			'desc' => __( 'Se non è un evento della scuola, inserire Numero di telefono per avere informazioni sull\'Evento', 'avanguardie' ),
+			'desc' => __( 'Se non è un evento del progetto, inserire Numero di telefono per avere informazioni sull\'Evento', 'avanguardie' ),
 			'type'    => 'text',
 			'attributes'    => array(
-				'data-conditional-id'     => $prefix.'organizzato_da_scuola',
+				'data-conditional-id'     => $prefix.'organizzato_da_progetto',
 				'data-conditional-value'  => "no",
 			),
 		)
@@ -322,10 +335,10 @@ function av_add_eventi_metaboxes() {
 	$cmb_undercontent->add_field( array(
 			'id' => $prefix . 'contatto_email',
 			'name'       => __('Contatto: email ', 'avanguardie' ),
-			'desc' => __( 'se non è un evento della scuola, Indirizzo email per avere informazioni sull\'Evento', 'avanguardie' ),
+			'desc' => __( 'se non è un evento del progetto, Indirizzo email per avere informazioni sull\'Evento', 'avanguardie' ),
 			'type'    => 'text_email',
 			'attributes'    => array(
-				'data-conditional-id'     => $prefix.'organizzato_da_scuola',
+				'data-conditional-id'     => $prefix.'organizzato_da_progetto',
 				'data-conditional-value'  => "no",
 			),
 		)

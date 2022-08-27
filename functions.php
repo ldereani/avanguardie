@@ -225,7 +225,9 @@ function av_scripts() {
 	wp_enqueue_script( 'av-jquery-match-height', get_template_directory_uri() . '/assets/js/components/jquery-match-height/dist/jquery.matchHeight.js', array(), false, true);
 	wp_enqueue_script( 'av-avanguardie-js', get_template_directory_uri() . '/assets/js/avanguardie.js', array(), false, true);
 
-
+	if(is_singular(array("luogo", "evento", "post", "indirizzo")) || is_archive() || is_search() || is_post_type_archive("luogo")) {
+		wp_enqueue_script( 'av-leaflet-js', get_template_directory_uri() . '/assets/js/components/leaflet/leaflet.js', array(), false, true);
+    }
     /*TODO: da definire se minifizzare*/
 	/*
 	*/

@@ -60,6 +60,40 @@ function av_register_main_options_metabox() {
 			'required'    => 'required'
 		),
 	) );
+
+
+    $header_options->add_field( array(
+		'id' => $prefix . 'citazione',
+			'name'        => __( 'Citazione Titolo', 'avanguardie' ),
+		'desc' => __( 'Breve (compresa tra 20 e 500 caratteri spazi inclusi) frase identificativa della missione o della identità del progetto' , 'avanguardie' ),
+		'type' => 'textarea',
+		'attributes'    => array(
+            'maxlength'  => '500',
+			'minlength'  => '20'
+		),
+	) );
+
+    $header_options->add_field( array(
+		'id' => $prefix . 'citazione_descrizione',
+			'name'        => __( 'Citazione Descrizione', 'avanguardie' ),
+		'desc' => __( 'Breve (compresa tra 20 e 500 caratteri spazi inclusi) frase identificativa della missione o della identità del progetto' , 'avanguardie' ),
+		'type' => 'textarea',
+		'attributes'    => array(
+            'maxlength'  => '500',
+			'minlength'  => '20'
+		),
+	) );
+
+    $header_options->add_field( array(
+		'id' => $prefix . 'chi_siamo',
+			'name'        => __( 'Chi siamo', 'avanguardie' ),
+		'desc' => __( 'Breve (compresa tra 20 e 500 caratteri spazi inclusi) frase che descrive chi siamo' , 'avanguardie' ),
+		'type' => 'textarea',
+		'attributes'    => array(
+            'maxlength'  => '500',
+			'minlength'  => '20'
+		),
+	) );
     /**
      * Registers options page "Alerts".
      */
@@ -432,6 +466,8 @@ function av_register_main_options_metabox() {
         'name' => 'Linkedin',
         'type' => 'text_url',
     ) );
+
+
 
 
     // pagina opzioni

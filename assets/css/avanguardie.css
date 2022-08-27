@@ -89,13 +89,13 @@
   color: #ffffff;
 }
 
-.bg-redbrown {
+.bg-redbrown, .bg-verde1, .bg-verde2 {
   color: #ffffff;
   position: relative;
   z-index: 0;
 }
 
-.bg-redbrown.bg-white-strip:before {
+.bg-redbrown.bg-white-strip:before, .bg-verde1.bg-white-strip:before,  .bg-verde2.bg-white-strip:before {
   position: absolute;
   z-index: -1;
   bottom: 0;
@@ -6008,6 +6008,12 @@ button.bg-petrol:focus {
 
 .bg-redbrown {
   background-color: #d1344c !important;
+}
+.bg-verde1 {
+  background-color: #74a383 !important;
+}
+.bg-verde2 {
+  background-color: #457e58 !important;
 }
 
 a.bg-redbrown:hover,
@@ -14922,6 +14928,17 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 .section.bg-greendarkgradient {
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#457e58+0,74a383+100 */
+background: #457e58; /* Old browsers */
+background: -moz-linear-gradient(left,  #457e58 0%, #74a383 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  #457e58 0%,#74a383 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  #457e58 0%,#74a383 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#457e58', endColorstr='#74a383',GradientType=1 ); /* IE6-9 */
+
+}
+
+
+.section.bg-greendarkgradient2 {
   color: #ffffff;
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0f842e+0,5cc984+100 */
   background: #0f842e;
@@ -19643,7 +19660,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6e9', end
   font-size: 2.63rem;
   line-height: 1.17;
   font-weight: 600;
-  color: #ffffff;
+ /* color: #ffffff; */
   position: relative;
   z-index: 0;
   padding: 120px 0 120px 0;
@@ -20412,8 +20429,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6e9', end
   line-height:1.03em;
 }
 .colore-primario {
-  color: #272727;
+  color: #272727; /* nero */
 }
 .colore-secondario {
-  color:#457e58;
+  color:#457e58; /* verde */
+}
+.colore-terziario {
+  color:#dddac5; /* crema */
+}
+.colore-quarto {
+  color: #f6f6e9; /* crema chiaro */
 }

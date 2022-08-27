@@ -11,6 +11,11 @@ get_template_part("template-parts/single/related-posts", "post");
 
 get_header();
 
+$link_schede_luoghi = av_get_meta("link_schede_luoghi");
+$nome_luogo_custom = av_get_meta("nome_luogo_custom");
+$link_schede_documenti = av_get_meta("link_schede_documenti");
+$file_documenti = av_get_meta("file_documenti");
+
 $date = av_get_meta("date");
 
 $user_can_view_post = true;
@@ -86,7 +91,11 @@ $user_can_view_post = true;
                                         <li>
                                             <a class="font-corpo list-item scroll-anchor-offset" href="#art-par-cosa" title="Vai al paragrafo <?php _e("Cos'è", "avanguardie"); ?>"><?php _e("Cos'è", "avanguardie"); ?></a>
                                         </li>
-										<?php
+                                        <?php 	if((is_array($link_schede_luoghi) && count($link_schede_luoghi)) || ($nome_luogo_custom != "")) { ?>
+                                            <li>
+                                                <a class="font-corpo list-item scroll-anchor-offset" href="#art-par-luogo" title="Vai al paragrafo <?php _e("Luogo", "avanguardie"); ?>"><?php _e("Luogo", "avanguardie"); ?></a>
+                                            </li>
+										<?php }
 										if($date) {
                                             ?>
                                             <li>
@@ -143,7 +152,27 @@ $user_can_view_post = true;
                                     <div class="video-container my-4">
 										<?php echo wp_oembed_get ($video); ?>
                                     </div>
-								<?php } ?>
+								<?php } 
+
+                                if((is_array($link_schede_luoghi) && count($link_schede_luoghi) > 0) || ($nome_luogo_custom != "" )) {
+                                    ?>
+
+                                    <h2 class="h4 font-titoli" id="art-par-luogo"><?php _e("Luogo", "avanguardie"); ?></h2>
+
+                                    <?php
+                                    $c = 0;
+                                    if (is_array($link_schede_luoghi) && count($link_schede_luoghi) > 0) {
+                                        foreach ($link_schede_luoghi as $idluogo) {
+                                            $c++;
+                                            $luogo = get_post($idluogo);
+                                            get_template_part("template-parts/luogo/card", "large");
+                                        }
+                                    } else if ($nome_luogo_custom != "") {
+                                        get_template_part("template-parts/luogo/card", "custom");
+
+                                    }
+                                }
+								?>
 
                                 
                                 <?php
@@ -208,6 +237,75 @@ $user_can_view_post = true;
 								?>
 
                                 
+                                <h2 class="h4 font-titoli"  id="art-par-contatti"><?php _e("Contatti", "avanguardie"); ?></h2>
+								<?php
+								$organizzato_da_progetto = av_get_meta("organizzato_da_progetto");
+								if($organizzato_da_progetto == "si") {
+									?>
+                                    <div  class="h6 font-titoli"><?php _e( "Organizzato da AVANGUARDIE VERDI", "avanguardie" ); ?></div>
+                                    
+								<?php
+								} ?>
+                                <?php if((($organizzato_da_progetto != "si") && ((av_get_meta("contatto_telefono") != "") || (av_get_meta("contatto_persona") != "") || (av_get_meta("contatto_email") != ""))) || ((av_get_meta("website") != "") ||  (av_get_meta("patrocinato") != "") || (av_get_meta("sponsor") != "") )) { ?>
+                                    <div class="in-evidence mb-5 py-4 pl-2 pr-2">
+                                        <ul class="mb-0 font-corpo">
+                                            <?php if (av_get_meta("website") != "") { ?>
+                                                <li><strong
+                                                        class="mr-2"><?php _e("Sito web:", "avanguardie"); ?></strong>
+                                                <a class="text-underline-hover" href="<?php echo av_get_meta("website"); ?>" aria-label="Vai a <?php echo av_get_meta("website"); ?> - link esterno"><?php echo av_get_meta("website"); ?></a>
+                                                </li><?php } ?>
+                                            <?php if (($organizzato_da_progetto != "si") && (av_get_meta("contatto_persona") != "")) { ?>
+                                                <li><strong
+                                                        class="mr-2"><?php _e("Referente:", "avanguardie"); ?></strong> <?php echo av_get_meta("contatto_persona"); ?>
+                                                </li><?php } ?>
+                                            <?php if (($organizzato_da_progetto != "si") && (av_get_meta("contatto_telefono") != "")) { ?>
+                                                <li><strong
+                                                        class="mr-2"><?php _e("Telefono:", "avanguardie"); ?></strong> <?php echo av_get_meta("contatto_telefono"); ?>
+                                                </li><?php } ?>
+                                            <?php if (($organizzato_da_progetto != "si") && (av_get_meta("contatto_email") != "")) { ?>
+                                                <li><strong
+                                                        class="mr-2"><?php _e("Email:", "avanguardie"); ?></strong>
+                                                <a href="mailto:<?php echo av_get_meta("contatto_email"); ?>"><?php echo av_get_meta("contatto_email"); ?></a>
+                                                </li><?php } ?>
+                                            <?php if (av_get_meta("patrocinato") != "") { ?>
+                                                <li><strong
+                                                        class="mr-2"><?php _e("Patrocinato da:", "avanguardie"); ?></strong> <?php echo av_get_meta("patrocinato"); ?>
+                                                </li><?php } ?>
+                                            <?php if (av_get_meta("sponsor") != "") { ?>
+                                                <li><strong
+                                                        class="mr-2"><?php _e("Sponsor:", "avanguardie"); ?></strong> <?php echo av_get_meta("sponsor"); ?>
+                                                </li><?php } ?>
+                                        </ul>
+                                    </div>
+                                <?php } ?>
+
+								<?php if((is_array($link_schede_documenti) && count($link_schede_documenti)>0) || (is_array($file_documenti) && count($file_documenti)>0)){ ?>
+                                    <h2 class="h4 font-titoli" id="art-par-altro"><?php _e("Ulteriori informazioni", "avanguardie"); ?></h2>
+                                    <div  class="h6"><?php _e("Documenti", "avanguardie"); ?></div>
+                                    <div class="card-deck card-deck-spaced">
+										<?php
+										if(is_array($link_schede_documenti) && count($link_schede_documenti)>0) {
+											global $documento;
+											foreach ( $link_schede_documenti as $link_scheda_documento ) {
+												$documento = get_post( $link_scheda_documento );
+												get_template_part( "template-parts/documento/card" );
+											}
+										}
+
+										global $idfile, $nomefile;
+										if(is_array($file_documenti) && count($file_documenti)>0) {
+
+											foreach ( $file_documenti as $idfile => $nomefile ) {
+												get_template_part( "template-parts/documento/file" );
+											}
+										}
+
+										?>
+                                    </div><!-- /card-deck card-deck-spaced -->
+								<?php } ?>
+
+
+
 								<?php get_template_part("template-parts/single/bottom"); ?>
                             </article>
                         </div><!-- /col-lg-6 -->

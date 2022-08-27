@@ -19,8 +19,12 @@ get_header();
             }
  //           get_template_part("template-parts/home/hero");
             get_template_part("template-parts/hero/home");
+           
+			get_template_part("template-parts/home/chi-siamo");
+			get_template_part("template-parts/home/citazione");
 
-            get_template_part("template-parts/home/activities");          
+
+ //           get_template_part("template-parts/home/activities");          
             get_template_part("template-parts/home/banner");
 
             $home_is_selezione_automatica = av_get_option("home_is_selezione_automatica", "homepage");

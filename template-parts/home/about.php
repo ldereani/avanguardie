@@ -50,7 +50,7 @@ global $post;
 <div id="scghpsYHE96WgDYm" style="width:100%;opacity:1.0;height:100%;">
 <div id="gb3tF8MrQQFvBUmH" style="transform:scale(1, 1);overflow:hidden;width:100%;height:100%;">
 <div id="BOKSTWsNwZyMGjpg" style="transform: rotate(0deg); top: 0%; left: 0%; width: 100%; position: relative; opacity: 1; height: 100%;">
-<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/b6d3cda0624441d5873796bc4140846f.svg" alt="Textured Handdrawn Fire Planet" loading="lazy" style="width:100%;height:100%;">
+<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/terra-infuocata.svg" alt="Textured Handdrawn Fire Planet" loading="lazy" style="width:100%;height:100%;">
 </div>
 </div>
 </div>
@@ -105,7 +105,7 @@ global $post;
 <div id="E0WwVM2OO41hDkyi" style="width:100%;opacity:1.0;height:100%;">
 <div id="RmdwE33exow2TGVt" style="transform:scale(1, 1);overflow:hidden;width:100%;height:100%;">
 <div id="Pw7jXh7UBMuDe2q1" style="transform: rotate(0deg); top: 0%; left: -85.0949%; width: 185.095%; position: relative; opacity: 1; height: 100%;">
-<a href="/chi-siamo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/574b5ff4ee082f8d235eb98efbe1f24a.svg" alt="Black Right Arrow" loading="lazy" style="width:100%;height:100%;"></a>
+<a href="/chi-siamo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/freccia.svg" alt="Black Right Arrow" loading="lazy" style="width:100%;height:100%;"></a>
 </div>
 </div>
 </div>
