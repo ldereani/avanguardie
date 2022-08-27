@@ -2,7 +2,7 @@
 <?php foreach($messages as $message): ?>
     <?php
 
-    if(trim($message['testo_message']) == "") continue;
+    if(! isset($message['teto_message']) || trim($message['testo_message']) == "") continue;
     $message_date = strtotime($message['data_message']);
     $now = strtotime("now");
     $color = $message['colore_message'] == 'yellow' ? 'black' : 'white';
