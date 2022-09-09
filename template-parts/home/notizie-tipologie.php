@@ -1,6 +1,5 @@
 <?php
 global $post, $tipologia_notizia, $ct, $servizio;
-
 $container_class = "bg-white";
 if($ct%2)
 	$container_class = "bg-crema";

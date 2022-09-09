@@ -11,7 +11,7 @@
 ?>
 <footer id="footer-wrapper" class="footer-wrapper">
     <div class="container">
-        <div class="row variable-gutters mb-5">
+<div class="row variable-gutters mb-5">
             <div class="col logos-wrapper">
                 
                 <div class="logo-footer">
@@ -74,6 +74,7 @@
                 <?php endif ?>
             </div>
         </div><!-- /row -->
+
         <?php
         $footer_text = av_get_option("footer_text", "setup");
         if(isset($footer_text) && trim($footer_text) != "") {
@@ -87,6 +88,7 @@
         }
         get_template_part("template-parts/common/copy");
         ?>
+         <?php get_template_part("template-parts/common/loghi"); ?>
 
 </footer>
 </div><!-- /push_container -->
