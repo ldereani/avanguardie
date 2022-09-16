@@ -9,6 +9,7 @@
  * @package Avanguardie
  */
 ?>
+<?php get_template_part("template-parts/common/loghi"); ?>
 <footer id="footer-wrapper" class="footer-wrapper">
     <div class="container">
 <div class="row variable-gutters mb-5">
@@ -88,10 +89,11 @@
         }
         get_template_part("template-parts/common/copy");
         ?>
-         <?php get_template_part("template-parts/common/loghi"); ?>
-
+       
+         
+         </div><!-- /push_container -->
 </footer>
-</div><!-- /push_container -->
+
 
 <?php wp_footer(); ?>
 
